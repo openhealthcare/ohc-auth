@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %title Open Healthcare Accounts
+
+    = stylesheet_link_tag 'lib/bootstrap/css/bootstrap'
+    = stylesheet_link_tag 'lib/bootstrap/css/bootstrap-responsive'
+    = stylesheet_link_tag 'ohc.auth'
+    = favicon_tag '/images/favicon.ico'
+
+  %body{:onload => "if (document.getElementById('username')) document.getElementById('username').focus()"}
+    .container
+      .row-fluid
+        %header
+          = image_tag "toplogo.png"
+
+          - if logged_in?
+            %span#logout= link_to 'Log out', '/logout'
+            %span#name.acct= link_to current_account.email, current_account.edit_path
+            - if current_account.admin?
+              %span#admin= link_to 'Admin', '/admin'
+
+    .container
+      .row-fluid
+        - if current_account and not current_account.verified
+          %div{:class => "alert alert-error"}
+            %a.close{"data-dismiss" => "alert"} x
+            = content_tag :div, "Your email is unverified - please check for your verification email", :id => "flash_errir"
+
+        - flash.each do |name, msg|
+          %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+            %a.close{"data-dismiss" => "alert"} x
+            = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
+
+      = yield
+
+    .navbar.navbar-fixed-bottom
+      %footer
+        .row-fluid
+          .span4.offset4
+            %center
+              brought to you by
+              = link_to 'Open Health Care UK', "http://www.openhealthcare.org.uk"

@@ -1,0 +1,26 @@
+<%# coding: UTF-8 -%>
+
+
+<div class="row-fluid">
+  <div class="span4 offset4 page-header">
+    <h4>
+      Log in to your Open Health Care account
+    </h4>
+  </div>
+</div>
+
+<% if @message %>
+<div class="row-fluid">
+  <div class="span4 offset4">
+    <p class="text-warning <%= escape_html @message[:type] %>">
+      <%= escape_html @message[:message] %>
+    </p>
+  </div>
+</div>
+<% end %>
+
+<div class="row-fluid">
+  <div class="span4 offset4 hero-unit">
+      <%= erb(:_login_form, :layout => false) %>
+  </div>
+</div>

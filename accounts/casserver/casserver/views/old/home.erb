@@ -1,0 +1,14 @@
+<%# coding: UTF-8 -%>
+
+<div class="row-fluid">
+  <% @services.each do |k, v|  %>
+    <div class="span4 hero-unit service">
+      <center>
+        <a href="<%= v['url'] %>">
+          <img src="<%= v['logo'] %>" alt="<%= v['name'] %>" />
+        </a>
+      </center>
+    </div>
+  <% end %>
+
+</div>

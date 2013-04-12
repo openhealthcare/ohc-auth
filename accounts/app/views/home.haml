@@ -1,0 +1,7 @@
+.row-fluid
+  - @services.each do |s|
+    - if s[:admin].nil? || (s[:admin] and current_account.admin?)
+      .span4.hero-unit.service
+        %center
+          %a{:href => s[:url]}
+            %img{:alt => s[:name], :src => s[:logo], :height => 70}/

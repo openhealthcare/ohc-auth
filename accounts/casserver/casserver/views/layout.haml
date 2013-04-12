@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    %title
+      Open Healthcare Accounts
+    %link{:href => "#{escape_html @uri_path}/stylesheets/lib/bootstrap/css/bootstrap.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "#{escape_html @uri_path}/stylesheets/lib/bootstrap/css/bootstrap-responsive.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "#{escape_html @uri_path}/stylesheets/ohc.auth.css", :rel => "stylesheet", :type => "text/css"}/
+    %link{:href => "#{escape_html @uri_path}/images/favicon.ico", :rel => "icon", :type => "image/ico"}/
+  %body{:onload => "if (document.getElementById('username')) document.getElementById('username').focus()"}
+    .container
+      .row-fluid
+        %header
+          %img{:src => "#{escape_html @uri_path}/images/toplogo.png"}/
+          - if defined?(@authenticated_username)
+            %span#logout
+              %a{:href => "/cas/logout"} Log out
+            %span#name.acct
+              = @authenticated_username
+    .container
+      = yield
+    / /container
+    .navbar.navbar-fixed-bottom
+      %footer
+        .row-fluid
+          .span4.offset4
+            %center
+              brought to you by
+              %a{:href => "http://www.openhealthcare.org.uk"} Open Health Care UK

@@ -1,0 +1,20 @@
+= form_tag @form_action, :onsubmit => "submitbutton = document.getElementById('login-submit'); submitbutton.value='please wait'; submitbutton.disabled=true; return true;" do
+  %table#form-layout
+    %tr
+      %td#username-label-container
+        %label#username-label{:for => "username"}
+          Username
+      %td#username-container
+        %input#username{:accesskey => "u", :name => "username", :size => "32", :tabindex => "1", :type => "text"}/
+    %tr
+      %td#password-label-container
+        %label#password-label{:for => "password"}
+          Password
+      %td#password-container
+        %input#password{:accesskey => "p", :autocomplete => "off", :name => "password", :size => "32", :tabindex => "2", :type => "password"}/
+    %tr
+      %td/
+      %td#submit-container
+        %input#lt{:name => "lt", :type => "hidden", :value => @lt}/
+        %input#service{:name => "service", :type => "hidden", :value => @service}/
+        %input#login-submit.button{:accesskey => "l", :tabindex => "4", :type => "submit", :value => "Log in"}/

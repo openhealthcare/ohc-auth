@@ -1,0 +1,56 @@
+<%# coding: UTF-8 -%>
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "XHTML1-s.dtd" >
+<html xmlns="http://www.w3.org/TR/1999/REC-html-in-xml"
+      xml:lang="en" lang="en" >
+
+  <head>
+    <title><%= escape_html @organization %><%= t.label.central_login_title %></title>
+
+    <link rel="stylesheet" type="text/css" href="<%= escape_html @uri_path %>/stylesheets/lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="<%= escape_html @uri_path %>/stylesheets/lib/bootstrap/css/bootstrap-responsive.css" />
+    <link rel="stylesheet" type="text/css" href="<%= escape_html @uri_path %>/stylesheets/ohc.auth.css" />
+
+    <link rel="icon" type="image/ico" href="<%= escape_html @uri_path %>/images/favicon.ico" />
+  </head>
+
+  <body onload="if (document.getElementById('username')) document.getElementById('username').focus()">
+
+
+    <div class="container">
+      <div class="row-fluid">
+        <header>
+          <img src="<%= escape_html @uri_path %>/images/toplogo.png" />
+          <% if defined?(@authenticated_username) %>
+            <span id="logout"><a href="/logout">Log out</a></span>
+            <span id="name" class="acct">
+              <%= @authenticated_username %>
+            </span>
+          <% end %>
+        </header>
+      </div>
+    </div>
+
+
+    <div class="container">
+
+      <%= yield %>
+
+    </div> <!-- /container -->
+
+    <div class="navbar navbar-fixed-bottom">
+      <footer>
+        <div class="row-fluid">
+          <div class="span4 offset4">
+            <center>
+              brought to you by
+              <a href="http://www.openhealthcare.org.uk">Open Health Care UK</a>
+            </center>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+  </body>
+</html>

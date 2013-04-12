@@ -1,0 +1,18 @@
+.row-fluid
+  .span4.offset4.page-header
+    %h4 Log in to your Open Health Care account
+  - if @message
+    .row-fluid
+      .span4.offset4
+        .alert
+          = @message[:message]
+        - if defined?(@authenticated_username)
+          %p{:class => "text-warning #{escape_html @message[:type]}"}
+            = "Logged in as #{@authenticated_username}"
+  .row-fluid
+    .span4.offset4.hero-unit
+      = haml(:_login_form, :layout => false)
+
+      %p
+        Don't have an account?
+        = link_to 'sign up', '/signup'

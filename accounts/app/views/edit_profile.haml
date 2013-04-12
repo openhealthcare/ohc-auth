@@ -1,0 +1,33 @@
+.row-fluid
+  .span6.offset3.hero-unit
+    %h4 Edit your profile
+    - form_for @account, '' do |f|
+      = f.error_messages
+
+      %fieldset.control-group
+        = f.label :name, :class => 'control-label'
+        .controls
+          = f.text_field :name, :class => 'input-xlarge input-with-feedback'
+        = f.label :surname, :class => 'control-label'
+        .controls
+          = f.text_field :surname, :class => 'input-xlarge input-with-feedback'
+
+
+      %fieldset.control-group
+        = f.label :email, :class => 'control-label'
+        .controls
+          = f.text_field :email, :class => 'input-xlarge input-with-feedback'
+
+      = f.submit_block "Create", :class => 'button'
+
+      %fieldset.control-group
+        = f.label :email, :class => 'control-label'
+        .controls
+          = f.text_field :email, :class => 'input-xlarge input-with-feedback'
+
+      = f.submit_block "Save", :class => 'button'
+
+-# .row-fluid
+-#   .span6.offset3.hero-unit
+-#     %p
+-#       = link_to 'Change your password', '/change-password'
