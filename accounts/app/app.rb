@@ -111,11 +111,19 @@ module Accounts
     end
 
     get :logout do
+      @next = params[:url]
+
       if logged_in?
+        if @next.nil?
+          @next = '/logout'
+        end
         set_current_account(nil)
-        redirect "/cas/logout?url=/logout"
+        redirect "/cas/logout?url=#{@next}"
       else
-        redirect "/"
+        if @next.nil?
+          @next = '/'
+        end
+        redirect @next
       end
     end
 
