@@ -14,14 +14,22 @@ class CASServer::Authenticators::Padrino < CASServer::Authenticators::Base
     if account = Account.authenticate(credentials[:username], credentials[:password])
       @session["OHCSESS"] = account.id
       @current_account = account
+      extract_extra(account)
       return true
      else
-      # Logout logic
-      # @session["OHCSESS"] = nil
-      # @current_account = nil
-
       return false
     end
+  end
+
+  ##
+  # Set the extra_attributes we want
+  #
+  def extract_extra account
+    @extra_attributes = {}
+    %w[name surname role].each do | attr |
+      @extra_attributes[attr] = account.send(attr)
+    end
+    puts "extract_extra() #{@extra_attributes}"
   end
 
 end

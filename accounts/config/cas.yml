@@ -207,6 +207,7 @@ authenticator:
 
  class: CASServer::Authenticators::Padrino
  source: padrinoauthenticator.rb
+ extra_attributes: role, name, surname
 
 #  extra_attributes: full_name, access_level
 #
@@ -553,17 +554,5 @@ enable_single_sign_out: true
 #  - 127.0.0.1
 #  - 192.168.0.0/24
 
-# This is our configuration for services
-
-ohc_services:
-   randomise_me:
-      name: Randomise Me
-      logo: http://byta.randomizeme.org/static/img/randomisemelogo.png
-      url:  http://byta.randomizeme.org/
-
-   open_prescribing:
-      name: Open Prescribing
-      logo: http://www.openprescribing.org/static//img/op-logo.png
-      url: http://www.openprescribing.org/
 
 accounts_url: http://localhost:8888
