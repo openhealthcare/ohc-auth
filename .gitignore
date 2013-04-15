@@ -1,2 +1,4 @@
 /accounts/log/casserver.log
 *local_settings.rb
+/fabfile.pyc
+/accounts/mailit.rb
